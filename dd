@@ -1,0 +1,27 @@
+#include <SPI.h>
+#include <Phpoc.h>
+#include <SoftwareSerial.h>
+SoftwareSerial BT(2,3);
+
+
+void setup() {
+  BT.begin(9600);
+  Serial.begin(9600);
+
+  Phpoc.begin(PF_LOG_SPI | PF_LOG_NET | PF_LOG_APP);
+  pinMode(A0, INPUT);
+}
+int oldState = 1;
+void loop() {
+  
+  int newState = digitalRead(A0);
+  if (oldState == 1 && newState == 0) {
+    //문이 닫혀있다가 열리게 되면
+  
+  BT.print("hate you");
+  Serial.print("hate you");
+}
+  oldState = newState;
+  delay(300);
+}
+ 
